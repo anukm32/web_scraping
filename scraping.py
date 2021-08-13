@@ -9,10 +9,8 @@ jobs=soup.find_all("div",{"class":"row company-list joblist"})
 
 for job in jobs:
    title_element= job.find("a")
-   company=jobs.find("div",{"class":"jobs-comp-name "})
-   post_date=jobs.find("div",{"class":"job-date "}).text
-   company_name=company.text
    title=title_element.text
    link=title_element["href"]
-   if any(word.lower() in title.lower() for word in key_words):
-       print(company_name)
+   company_name=job.find("div",{"class":"jobs-comp-name "}).text
+   post_date=job.find("div",{"class":"job-date "}).text
+   print(title_element,company_name, post_date)
