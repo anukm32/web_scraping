@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import csv
 website_url="https://infopark.in/companies/jobs/kochi-phase-2?"
 key_words=["python"]
+out_putfile=open("jobs.text","w") 
 res=requests.get(website_url)
 
 soup=BeautifulSoup(res.text,'lxml')
@@ -15,5 +16,6 @@ for job in jobs:
    company_name=job.find("div",{"class":"jobs-comp-name "})
    post_date=job.find("div",{"class":"job-date "})
    if any(word.lower() in title.lower() for word in key_words):
+      out_putfile.write(title)
 
-        print (title_element.text.strip())
+      
